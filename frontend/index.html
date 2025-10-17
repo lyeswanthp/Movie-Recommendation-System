@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Recommendation App</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🎬 Movie Recommender</h1>
+    <p>Discover new movies tailored to your tastes with the power of AI.</p>
+  </header>
+  <main>
+    <section class="search-section">
+      <div class="input-group">
+        <label for="query-input">Describe your perfect movie or enter a title:</label>
+        <input type="text" id="query-input" placeholder="Enter description or movie title..." />
+      </div>
+      <div class="options">
+        <label><input type="radio" name="mode" value="description" checked /> Description</label>
+        <label><input type="radio" name="mode" value="title" /> Movie Title</label>
+        <label for="top-n"># of results:</label>
+        <select id="top-n">
+          <option value="3">3</option>
+          <option value="5" selected>5</option>
+          <option value="10">10</option>
+        </select>
+        <button id="search-btn">Search</button>
+      </div>
+    </section>
+    <section id="results" class="results-section">
+      <!-- Recommendations will be injected here -->
+    </section>
+  </main>
+  <footer>
+    <p>Powered by LangGraph, MindsDB, and a rich movie dataset.</p>
+  </footer>
+</body>
+</html>
