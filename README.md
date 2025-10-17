@@ -87,24 +87,6 @@ source venv/bin/activate
 pip install -r backend/requirements.txt
 ```
 
-### Step 2: Choose Your Version
-
-#### Option A: Run the Basic Version
-
-**Windows:**
-```cmd
-cd backend
-python main.py
-```
-
-**Linux:**
-```bash
-cd backend
-python3 main.py
-```
-
-The server will start at: http://127.0.0.1:8000
-
 #### Option B: Run the Advanced Version (with AI)
 
 First, if you want AI-powered explanations, install Ollama:
@@ -194,89 +176,9 @@ movie_recommender_app/
 - Faster similarity search with ChromaDB
 - Works without Ollama (falls back to vector search only)
 
-## Troubleshooting
-
-### "Python not found" error:
-- Make sure Python is installed and added to your PATH
-- Try using `python3` instead of `python` (especially on Linux/Mac)
-
-### Port already in use:
-- Another app is using port 8000
-- Either close that app or change the port in the code (look for `port=8000` in main.py)
-
-### "Module not found" error:
-- Make sure you activated the virtual environment
-- Run the pip install command again
-- Check that you're in the right directory
-
-### Advanced version doesn't give AI explanations:
-- This is normal if Ollama isn't installed or running
-- The app will work fine with just vector search
-- To enable AI features, install Ollama and pull a model (see Step 2, Option B)
-
-### Movies not loading:
-- Check that the `backend/data/movielens_metadata.csv` file exists
-- The first time you run the advanced version, it needs to build the vector database (takes a few minutes)
-
-### Frontend can't connect to backend:
-- Make sure the backend server is running (you should see logs in the terminal)
-- Check that you're using the correct address (http://127.0.0.1:8000)
-- Look for any error messages in the terminal where the server is running
-
-## Technical Details (For the Curious)
-
-### Technologies Used:
-- **FastAPI**: Modern Python web framework (handles the API)
-- **pandas**: Data manipulation (loads and processes movie data)
-- **scikit-learn**: TF-IDF vectorization (basic version search)
-- **ChromaDB**: Vector database (advanced version storage)
-- **Sentence Transformers**: Creates semantic embeddings (advanced version)
-- **LangGraph**: Multi-agent workflow system (coordinates the AI)
-- **Ollama**: Local LLM inference (AI explanations, optional)
-- **Vanilla JavaScript**: Frontend interactivity (no frameworks needed)
-
-### How It Works:
-
-**Basic Version:**
-1. Loads movie data into memory
-2. Creates TF-IDF vectors from movie descriptions
-3. When you search, it converts your query to a vector
-4. Finds movies with vectors most similar to your query
-5. Returns the top matches
-
-**Advanced Version:**
-1. Loads movies and creates semantic embeddings using Sentence Transformers
-2. Stores embeddings in ChromaDB for fast retrieval
-3. When you search, creates an embedding of your query
-4. Finds nearest neighbors in vector space (semantic similarity)
-5. If Ollama is available, uses AI to explain why each movie matches
-6. Returns recommendations with AI-generated explanations
-
 ## Dataset
 
 The app uses the MovieLens dataset, which contains thousands of movies with descriptions, genres, and metadata. This is real data from actual movie databases, so you're getting quality recommendations.
-
-## Future Ideas
-
-Some things that could make this even better:
-- User accounts to save favorite movies
-- Rating system to improve recommendations over time
-- Integration with streaming service availability
-- Movie trailers and poster images
-- Social features to share recommendations with friends
-- Mobile app version
-
-## Need Help?
-
-If something's not working:
-1. Check the troubleshooting section above
-2. Make sure all the setup steps were completed
-3. Look at the terminal where the server is running for error messages
-4. Try restarting the server
-
-## License
-
-This is a learning project built for educational purposes. The MovieLens data is used under their license terms.
 
 ---
 
